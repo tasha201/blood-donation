@@ -1,0 +1,368 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Darker Grotesque", sans-serif;
+}
+
+body {
+  display: flex;
+  justify-content: space-around;
+  align-items: stretch;
+  min-height: 100vh;
+  background-color: #fff7f7;
+  padding: 0 30px 30px;
+}
+
+.wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+header {
+  width: 100%;
+  height: 80px;
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+header img {
+  width: 80px;
+  margin-right: auto;
+}
+
+.navbar {
+  width: 36%;
+}
+
+.navbar a {
+  text-decoration: none;
+  font-size: 24px;
+  text-transform: uppercase;
+  margin-left: 30px;
+  color: #cb5050;
+}
+
+.navbar a:hover {
+  text-decoration: underline;
+  text-decoration-thickness: from-font;
+}
+
+.block {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-top: 50px;
+  height: 100%;
+}
+
+.block img {
+  width: 100px;
+}
+
+h1 {
+  display: block;
+  font-size: 3rem;
+  text-transform: uppercase;
+  color: #e26e6e;
+  font-weight: 700;
+}
+
+.h1-part {
+  font-size: 16rem;
+  line-height: 8rem;
+  font-weight: 200;
+  color: #af2828;
+}
+
+h2 {
+  font-size: 2.5rem;
+  text-transform: uppercase;
+  color: #df5c5c;
+  font-weight: 400;
+  margin-left: 15px;
+}
+
+/* animation */
+.container {
+  display: none;
+  height: 30%;
+  position: relative;
+  /* display: flex; */
+  justify-content: center;
+  align-items: center;
+}
+
+.container h5 {
+  width: 100%;
+  position: absolute;
+  top: 140px;
+  left: 360px;
+  color: #cb5050;
+  font-size: 50px;
+  text-align: center;
+  font-weight: 700;
+}
+
+.login-greeting,
+.register-greeting {
+  display: none;
+}
+
+.loader {
+  display: none;
+  position: absolute;
+  top: 175px;
+  left: 0px;
+  width: 300px;
+  height: 300px;
+  /* display: flex; */
+  justify-content: center;
+  align-items: center;
+  background: rgba(9, 0, 0, 0.2);
+  filter: url(#Gooey);
+}
+
+.loader span {
+  position: absolute;
+  left: 0;
+  top: 140px;
+  transform-origin: 150px;
+  width: 100px;
+  height: 100px;
+  background: #cb5050;
+  border-radius: 81% 0% 76% 75% / 73% 57% 77% 75%;
+  animation: animate 5s ease-in-out infinite;
+  animation-delay: calc(0.15s * var(--i));
+}
+
+@keyframes animate {
+  0%,
+  10% {
+    width: 80px;
+    height: 80px;
+    transform: rotate(0deg) translateX(150px);
+  }
+  40%,
+  70% {
+    width: 20px;
+    height: 20px;
+    transform: rotate(calc(360deg / 8 * var(--i)));
+    box-shadow: 0 0 0 10px #d94c4c;
+  }
+  90%,
+  100% {
+    width: 80px;
+    height: 80px;
+    transform: rotate(0deg) translateX(150px);
+  }
+}
+
+svg {
+  width: 0;
+  height: 0;
+}
+
+/* login-section */
+.bg {
+  overflow: hidden;
+  width: 45%;
+  height: 80%;
+  position: relative;
+}
+
+.login-section {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 70%;
+  height: 100%;
+  color: #cb5050;
+  border-radius: 14px;
+}
+
+.login-section .form-box {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+.login-section .form-box.register {
+  transform: translateX(430px);
+  transition: transform 0.6s ease;
+  transition-delay: 0s;
+}
+
+.login-section.active .form-box.register {
+  transform: translateX(0px);
+  transition-delay: 0.7s;
+}
+
+.login-section .form-box.login {
+  transform: translateX(0px);
+  transition: transform 0.6s ease;
+  transition-delay: 0.7s;
+}
+
+.login-section.active .form-box.login {
+  transform: translateX(430px);
+  transition-delay: 0s;
+}
+
+.login-section .form-box h4 {
+  font-size: 30px;
+  text-align: center;
+}
+
+.form-box .input-box {
+  width: 340px;
+  height: 50px;
+  border-bottom: 2px solid #cb5050;
+  margin: 30px 0;
+  position: relative;
+}
+
+.input-box input {
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-size: 22px;
+  padding-right: 28px;
+}
+
+.input-box label {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  font-size: 22px;
+  font-weight: 600;
+  pointer-events: none;
+}
+
+.input-box .icon {
+  position: absolute;
+  top: 13px;
+  right: 0;
+  font-size: 20px;
+}
+
+.input-box input:focus ~ label,
+.input-box input:valid ~ label {
+  top: -5px;
+  transition: top 0.4s ease-in-out;
+}
+
+.input-box input:valid {
+  background: transparent;
+}
+
+.remember-password {
+  font-size: 20px;
+  font-weight: 500;
+  margin: -15px 0 15px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.remember-password label input {
+  accent-color: #cb5050;
+  margin-right: 3px;
+}
+
+.remember-password a {
+  color: #cb5050;
+  text-decoration: none;
+}
+
+.remember-password a:hover {
+  text-decoration: underline;
+}
+
+.btn {
+  background: #d94c4c;
+  width: 100%;
+  height: 50px;
+  outline: none;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 22px;
+  font-weight: 600;
+  color: #fff;
+  box-shadow: rgba(0, 0, 0, 0.4);
+}
+
+.btn:hover {
+  background: #df5c5c;
+}
+
+.create-account {
+  font-size: 20px;
+  text-align: center;
+  margin: 25px;
+}
+
+.create-account p a {
+  color: #cb5050;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.create-account p a:hover {
+  text-decoration: underline;
+}
+
+.learn-btn {
+  margin-top: 50px;
+  width: 25%;
+  margin-left: 15px;
+}
+
+/* drop on heading*/
+.drop {
+  display: inline-block;
+  position: relative;
+  width: 145px;
+  height: 150px;
+  background: #af0d0de0;
+  border-radius: 50%;
+  box-shadow: rgb(145 5 5 / 74%) 13px 10px 10px inset,
+    rgba(238, 123, 123, 0.05) 15px 25px 10px,
+    rgba(255, 155, 155, 0.59) -5px -5px 20px inset;
+
+  /* box-shadow: inset 10px 10px 10px rgba(0, 0, 0, 0.05),
+    15px 25px 10px rgba(0, 0, 0, 0.05),
+    15px 20px 20px rgba(0, 0, 0, 0.05),
+    inset -10px -10px 15px rgba(255, 255, 255, 0.9); */
+}
+
+.drop::before {
+  content: "";
+  position: absolute;
+  top: 36px;
+  left: 27px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #e78686;
+}
+
+.drop::after {
+  content: "";
+  position: absolute;
+  top: 25px;
+  left: 50px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #e78686;
+}
